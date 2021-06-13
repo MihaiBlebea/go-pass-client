@@ -7,8 +7,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"os"
 )
+
+const baseServiceUrl = "http://159.65.52.236/api"
 
 var (
 	ErrInvalidEndpoint error = errors.New("Add prefix / to endpoint")
@@ -30,7 +31,7 @@ type Service interface {
 func New(token string) Service {
 	return &service{
 		token:      token,
-		baseURL:    os.Getenv("BASE_URL"),
+		baseURL:    baseServiceUrl,
 		apiVersion: 1,
 	}
 }
